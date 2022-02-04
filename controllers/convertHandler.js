@@ -7,6 +7,7 @@ const galRegex = /[0-9]?gal/i
 const literRegex = /[0-9]?l/i
 const kmRegex = /[0-9]?km/i
 const miRegex = /[0-9]?mi/i
+const nonDigitRegex = /\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\=|\+|\{|\}|\[|\]|\;|\'|\"|\:|\?|\>|\<|\,|\s|\`|\_|\|/
 const splitRegex = /[a-z]/i
 
 function ConvertHandler() {
@@ -25,8 +26,13 @@ function ConvertHandler() {
     } else {
       result = 1;
     }
-    
-    return evalStr(result);
+
+    if (nonDigitRegex.test(splitNum)) {
+      return 'invalid number';
+    };
+
+    result = evalStr(result);
+    return result;
   };
   
   this.getUnit = function(input) {
@@ -44,7 +50,7 @@ function ConvertHandler() {
     } else if (literRegex.test(input)) {
       return 'L';
     } else {
-      return 'Invalid unit';
+      return 'invalid unit';
     }
   };
   
@@ -70,7 +76,7 @@ function ConvertHandler() {
         return 'gal';
         break;
       default:
-        return 'Invalid unit';
+        return 'invalid unit';
     }
   };
 
@@ -108,7 +114,7 @@ function ConvertHandler() {
         return initNum * lToGal;
         break;
       default:
-        return 'Invalid Unit';
+        return 'invalid Unit';
     }
   };
   
@@ -142,7 +148,7 @@ function ConvertHandler() {
         returnedUnit = 'gallons';
         break;
       default:
-        return 'Invalid Unit';
+        return 'invalid Unit';
     }
 
     const result = `${initNum} ${initialUnit} converts to ${returnNum} ${returnedUnit}`
