@@ -82,6 +82,30 @@ function ConvertHandler() {
 
   this.spellOutUnit = function(unit) {
     let result;
+
+    
+    switch(unit) {
+      case 'lbs':
+        result = 'pounds';
+        break;
+      case 'kg':
+        result = 'kilograms';
+        break;
+      case 'gal':
+        result = 'gallons';
+        break;
+      case 'km':
+        result = 'kilometers';
+        break;
+      case 'mi':
+        result = 'miles';
+        break;
+      case 'L':
+        result = 'liters';
+        break;
+      default:
+        return 'invalid Unit';
+    }
     
     return result;
   };
@@ -119,10 +143,8 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    let initialUnit;
-    let returnedUnit;
 
-    switch(initUnit) {
+/*    switch(initUnit) {
       case 'lbs':
         initialUnit = 'pounds';
         returnedUnit = 'kilograms';
@@ -149,9 +171,9 @@ function ConvertHandler() {
         break;
       default:
         return 'invalid Unit';
-    }
+    } */
 
-    const result = `${initNum} ${initialUnit} converts to ${returnNum} ${returnedUnit}`
+    const result = `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`
     
     return result;
   };
