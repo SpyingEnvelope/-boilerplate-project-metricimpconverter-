@@ -4,14 +4,6 @@ const expect = require('chai').expect;
 const ConvertHandler = require('../controllers/convertHandler.js');
 
 module.exports = function (app) {
-  
-/*   const lbRegex = /[0-9]?lbs/i
-  const kgRegex = /[0-9]?kg/i
-  const galRegex = /[0-9]?gal/i
-  const kmRegex = /[0-9]?km/i
-  const miRegex = /[0-9]?mi/i
-  const splitRegex = /[a-z]/i */
-
 
   let convertHandler = new ConvertHandler();
 
