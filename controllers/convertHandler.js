@@ -9,6 +9,20 @@ const kmRegex = /[0-9]?km/i
 const miRegex = /[0-9]?mi/i
 const nonDigitRegex = /\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\=|\+|\{|\}|\[|\]|\;|\'|\"|\:|\?|\>|\<|\,|\s|\`|\_|\|/
 const splitRegex = /[a-z]/i
+const unitRegex = /[0-9](?=[a-zA-Z])/
+const forwardSlashRegex = /\//g
+
+/* const lbRegex = /^lbs$/i
+const kgRegex = /^kg$/i
+const galRegex = /^gal$/i
+const literRegex = /^l$/i
+const kmRegex = /^km$/i
+const miRegex = /^mi$/i
+const nonDigitRegex = /\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\=|\+|\{|\}|\[|\]|\;|\'|\"|\:|\?|\>|\<|\,|\s|\`|\_|\|/
+const splitRegex = /[a-z]/i
+const unitRegex = /[0-9](?=[a-zA-Z])/
+const forwardSlashRegex = /\//g
+const digitRegex = /[0-9]/g */
 
 function ConvertHandler() {
   
@@ -29,7 +43,11 @@ function ConvertHandler() {
 
     if (nonDigitRegex.test(splitNum)) {
       return 'invalid number';
-    };
+    } else if (splitNum.match(forwardSlashRegex)) {
+      if (splitNum.match(forwardSlashRegex).length > 1) {
+        return 'invalid number';
+      }
+    }
 
     result = evalStr(result);
     return result;
@@ -37,19 +55,41 @@ function ConvertHandler() {
   
   this.getUnit = function(input) {
 
-    if (lbRegex.test(input)) {
+    // console.log(input);
+
+    // console.log(digitRegex.test(input));
+    let unit = input;
+
+  /*  if (digitRegex.test(input)) {
+      console.log('i entered digit regex if')
+      const splitArr = input.split(unitRegex);
+      if (splitArr.length > 2) {
+        return 'invalid unit';
+      } else {
+        console.log('i am here')
+        console.log(splitArr[1])
+        unit = splitArr[1];
+      }
+    } */
+
+    
+    // console.log(unit);
+
+
+    if (lbRegex.test(unit)) {
       return 'lbs';
-    } else if (kgRegex.test(input)) {
+    } else if (kgRegex.test(unit)) {
       return 'kg';
-    } else if (galRegex.test(input)) {
+    } else if (galRegex.test(unit)) {
       return 'gal';
-    } else if (kmRegex.test(input)) {
+    } else if (kmRegex.test(unit)) {
       return 'km';
-    } else if (miRegex.test(input)) {
+    } else if (miRegex.test(unit)) {
       return 'mi';
-    } else if (literRegex.test(input)) {
+    } else if (literRegex.test(unit)) {
       return 'L';
     } else {
+      console.log('i am at else')
       return 'invalid unit';
     }
   };
@@ -143,35 +183,6 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-
-/*    switch(initUnit) {
-      case 'lbs':
-        initialUnit = 'pounds';
-        returnedUnit = 'kilograms';
-        break;
-      case 'kg':
-        initialUnit = 'kilograms';
-        returnedUnit = 'pounds';
-        break;
-      case 'gal':
-        initialUnit = 'gallons';
-        returnedUnit = 'liters';
-        break;
-      case 'km':
-        initialUnit = 'kilometers';
-        returnedUnit = 'miles';
-        break;
-      case 'mi':
-        initialUnit = 'miles';
-        returnedUnit = 'kilometers';
-        break;
-      case 'L':
-        initialUnit = 'liters';
-        returnedUnit = 'gallons';
-        break;
-      default:
-        return 'invalid Unit';
-    } */
 
     const result = `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`
     

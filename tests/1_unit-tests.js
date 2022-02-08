@@ -27,6 +27,28 @@ suite('Unit Tests', function(){
     test('convertHandler should correctly read a fractional input with a decimal', () => {
         assert.equal(convertHandler.getNum('24.5/100lbs'), 0.245);
         assert.equal(convertHandler.getNum('325.42/100km'), 3.2542);
-        assert.equal(convertHandler.getNum('1.3/10mi'), 0.13);
+        assert.equal(convertHandler.getNum('1.4/10mi'), 1.4/10);
+    })
+
+    test('convertHandler should correctly return an error on a double-fraction (i.e. 3/2/3)', () => {
+        assert.equal(convertHandler.getNum('3.2/4/5lbs'), 'invalid number');
+        assert.equal(convertHandler.getNum('10//km'), 'invalid number');
+        assert.equal(convertHandler.getNum('32/4/5/6/7/2/1l'), 'invalid number');
+    })
+
+    test('convertHandler should correctly default to a numerical input of 1 when no numerical input is provided', () => {
+        assert.equal(convertHandler.getNum('lbs'), 1);
+        assert.equal(convertHandler.getNum('l'), 1);
+        assert.equal(convertHandler.getNum('mi'), 1);
+    })
+
+    test('convertHandler should correctly read each valid input unit', () => {
+        assert.equal(convertHandler.getUnit('32lbs'), 'lbs');
+        assert.equal(convertHandler.getUnit('42/4kg'), 'kg');
+        assert.equal(convertHandler.getUnit('33/1l'), 'L');
+        assert.equal(convertHandler.getUnit('55.1/2gal'), 'gal');
+        assert.equal(convertHandler.getUnit('22.5mi'), 'mi');
+        assert.equal(convertHandler.getUnit('1km'), 'km');
+
     })
 });
