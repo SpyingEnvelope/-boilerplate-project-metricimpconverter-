@@ -1,7 +1,7 @@
 const e = require("express")
 const { init } = require("../server")
 
-const lbRegex = /[0-9]?lbs/i
+/* const lbRegex = /[0-9]?lbs/i
 const kgRegex = /[0-9]?kg/i
 const galRegex = /[0-9]?gal/i
 const literRegex = /[0-9]?l/i
@@ -10,9 +10,9 @@ const miRegex = /[0-9]?mi/i
 const nonDigitRegex = /\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\=|\+|\{|\}|\[|\]|\;|\'|\"|\:|\?|\>|\<|\,|\s|\`|\_|\|/
 const splitRegex = /[a-z]/i
 const unitRegex = /[0-9](?=[a-zA-Z])/
-const forwardSlashRegex = /\//g
+const forwardSlashRegex = /\//g */
 
-/* const lbRegex = /^lbs$/i
+const lbRegex = /^lbs$/i
 const kgRegex = /^kg$/i
 const galRegex = /^gal$/i
 const literRegex = /^l$/i
@@ -22,7 +22,7 @@ const nonDigitRegex = /\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\=|\+|\{|\}|\[|\]|\;|
 const splitRegex = /[a-z]/i
 const unitRegex = /[0-9](?=[a-zA-Z])/
 const forwardSlashRegex = /\//g
-const digitRegex = /[0-9]/g */
+const digitRegex = /[0-9]/
 
 function ConvertHandler() {
   
@@ -55,42 +55,41 @@ function ConvertHandler() {
   
   this.getUnit = function(input) {
 
-    // console.log(input);
-
-    // console.log(digitRegex.test(input));
     let unit = input;
 
-  /*  if (digitRegex.test(input)) {
-      console.log('i entered digit regex if')
-      const splitArr = input.split(unitRegex);
-      if (splitArr.length > 2) {
-        return 'invalid unit';
+    if (digitRegex.test(unit)) {
+      unit = unit.split(unitRegex)[1];
+      if (lbRegex.test(unit)) {
+        return 'lbs';
+      } else if (kgRegex.test(unit)) {
+        return 'kg';
+      } else if (galRegex.test(unit)) {
+        return 'gal';
+      } else if (kmRegex.test(unit)) {
+        return 'km';
+      } else if (miRegex.test(unit)) {
+        return 'mi';
+      } else if (literRegex.test(unit)) {
+        return 'L';
       } else {
-        console.log('i am here')
-        console.log(splitArr[1])
-        unit = splitArr[1];
+        return 'invalid unit';
       }
-    } */
-
-    
-    // console.log(unit);
-
-
-    if (lbRegex.test(unit)) {
-      return 'lbs';
-    } else if (kgRegex.test(unit)) {
-      return 'kg';
-    } else if (galRegex.test(unit)) {
-      return 'gal';
-    } else if (kmRegex.test(unit)) {
-      return 'km';
-    } else if (miRegex.test(unit)) {
-      return 'mi';
-    } else if (literRegex.test(unit)) {
-      return 'L';
     } else {
-      console.log('i am at else')
-      return 'invalid unit';
+      if (lbRegex.test(unit)) {
+        return 'lbs';
+      } else if (kgRegex.test(unit)) {
+        return 'kg';
+      } else if (galRegex.test(unit)) {
+        return 'gal';
+      } else if (kmRegex.test(unit)) {
+        return 'km';
+      } else if (miRegex.test(unit)) {
+        return 'mi';
+      } else if (literRegex.test(unit)) {
+        return 'L';
+      } else {
+        return 'invalid unit';
+      }
     }
   };
   

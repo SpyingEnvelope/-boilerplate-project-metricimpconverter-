@@ -49,6 +49,22 @@ suite('Unit Tests', function(){
         assert.equal(convertHandler.getUnit('55.1/2gal'), 'gal');
         assert.equal(convertHandler.getUnit('22.5mi'), 'mi');
         assert.equal(convertHandler.getUnit('1km'), 'km');
+    })
 
+    test('convertHandler should correctly return an error for an invalid input unit', () => {
+        assert.equal(convertHandler.getUnit('32wow'), 'invalid unit');
+        assert.equal(convertHandler.getUnit('32lbsowrlfds'), 'invalid unit');
+        assert.equal(convertHandler.getUnit('wow'), 'invalid unit');
+        assert.equal(convertHandler.getUnit('32kges'), 'invalid unit');
+        assert.equal(convertHandler.getUnit('32liters'), 'invalid unit');
+    })
+
+    test('convertHandler should return the correct return unit for each valid input unit', () => {
+        assert.equal(convertHandler.getUnit('lbs'), 'lbs');
+        assert.equal(convertHandler.getUnit('2kg'), 'kg');
+        assert.equal(convertHandler.getUnit('30mi'), 'mi');
+        assert.equal(convertHandler.getUnit('40l'), 'L');
+        assert.equal(convertHandler.getUnit('40gal'), 'gal');
+        assert.equal(convertHandler.getUnit('100km'), 'km');
     })
 });
