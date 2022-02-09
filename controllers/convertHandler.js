@@ -1,17 +1,6 @@
 const e = require("express")
 const { init } = require("../server")
 
-/* const lbRegex = /[0-9]?lbs/i
-const kgRegex = /[0-9]?kg/i
-const galRegex = /[0-9]?gal/i
-const literRegex = /[0-9]?l/i
-const kmRegex = /[0-9]?km/i
-const miRegex = /[0-9]?mi/i
-const nonDigitRegex = /\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\=|\+|\{|\}|\[|\]|\;|\'|\"|\:|\?|\>|\<|\,|\s|\`|\_|\|/
-const splitRegex = /[a-z]/i
-const unitRegex = /[0-9](?=[a-zA-Z])/
-const forwardSlashRegex = /\//g */
-
 const lbRegex = /^lbs$/i
 const kgRegex = /^kg$/i
 const galRegex = /^gal$/i
