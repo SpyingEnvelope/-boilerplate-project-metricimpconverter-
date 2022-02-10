@@ -19,8 +19,8 @@ suite('Functional Tests', function() {
                 assert.equal(res.body.returnUnit, 'gal');
                 assert.equal(res.body.initNum, 10);
                 assert.equal(res.body.initUnit, 'L');
-                assert.equal(res.body.returnNum, 2.6417);
-                assert.equal(res.body.string, '10 liters converts to 2.6417 gallons')
+                assert.equal(res.body.returnNum, 2.64172);
+                assert.equal(res.body.string, '10 liters converts to 2.64172 gallons')
                 done();
             })
     })

@@ -78,32 +78,32 @@ suite('Unit Tests', function(){
     })
 
     test('convertHandler should correctly convert gal to L', () => {
-        assert.equal(convertHandler.convert(32, 'gal'), 32 * 3.78541);
-        assert.equal(convertHandler.convert(100, 'gal'), 100 * 3.78541);
+        assert.equal(convertHandler.convert(32, 'gal'), 121.13312);
+        assert.equal(convertHandler.convert(100, 'gal'), 378.54100);
     })
 
     test('convertHandler should correctly convert L to gal', () => {
-        assert.equal(convertHandler.convert(32, 'L'), 32 * 0.26417);
-        assert.equal(convertHandler.convert(100, 'L'), 100 * 0.26417);
+        assert.equal(convertHandler.convert(32, 'L'), 8.45351);
+        assert.equal(convertHandler.convert(100, 'L'), 26.41722);
     })
 
     test('convertHandler should correctly convert mi to km', () => {
-        assert.equal(convertHandler.convert(100, 'mi'), 100 * 1.60934);
-        assert.equal(convertHandler.convert(1000, 'mi'), 1000 * 1.60934);
+        assert.equal(convertHandler.convert(100, 'mi'), 160.93400);
+        assert.equal(convertHandler.convert(1000, 'mi'), 1609.34000);
     })
 
     test('convertHandler should correctly convert km to mi', () => {
-        assert.equal(convertHandler.convert(100, 'km'), 100 * 0.62137);
-        assert.equal(convertHandler.convert(3250, 'km'), 3250 * 0.62137);
+        assert.equal(convertHandler.convert(100, 'km'), 62.13727);
+        assert.equal(convertHandler.convert(3250, 'km'), 2019.46139);
     })
 
     test('convertHandler should correctly convert lbs to kg', () => {
-        assert.equal(convertHandler.convert(100, 'lbs'), 100 * 0.453592);
-        assert.equal(convertHandler.convert(350, 'lbs'), 350 * 0.453592);
+        assert.equal(convertHandler.convert(100, 'lbs'), 45.35920);
+        assert.equal(convertHandler.convert(350, 'lbs'), 158.75720);
     })
 
     test('convertHandler should correctly convert kg to lbs', () => {
-        assert.equal(convertHandler.convert(100, 'kg'), 100 * 2.20462);
-        assert.equal(convertHandler.convert(350, 'kg'), 350 * 2.20462);
+        assert.equal(convertHandler.convert(100, 'kg'), 220.46244);
+        assert.equal(convertHandler.convert(350, 'kg'), 771.61855);
     })
 });
